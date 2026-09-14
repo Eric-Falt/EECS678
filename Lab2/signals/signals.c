@@ -1,36 +1,42 @@
-#include <stdio.h>     /* standard I/O functions                         */
-#include <stdlib.h>    /* exit                                           */
-#include <string.h>    /* memset                                         */
-#include <unistd.h>    /* standard unix functions, like getpid()         */
-#include <signal.h>    /* signal name macros, and the signal() prototype */
+#include <stdio.h>  /* standard I/O functions                         */
+#include <stdlib.h> /* exit                                           */
+#include <string.h> /* memset                                         */
+#include <unistd.h> /* standard unix functions, like getpid()         */
+#include <signal.h> /* signal name macros, and the signal() prototype */
 
 /* first, define the Ctrl-C counter, initialize it with zero. */
 int ctrl_c_count = 0;
 int got_response = 0;
-#define CTRL_C_THRESHOLD  5 
+#define CTRL_C_THRESHOLD 5
 
 /* the Ctrl-C signal handler */
 void catch_int(int sig_num)
 {
   /* increase count, and check if threshold was reached */
   ctrl_c_count++;
-  if (ctrl_c_count >= CTRL_C_THRESHOLD) {
+  if (ctrl_c_count >= CTRL_C_THRESHOLD)
+  {
     char answer[30];
 
     /* prompt the user to tell us if to really
      * exit or not */
     printf("\nReally exit? [Y/n]: ");
     fflush(stdout);
+
+    alarm(5);
+    
     fgets(answer, sizeof(answer), stdin);
-    if (answer[0] == 'n' || answer[0] == 'N') {
+    if (answer[0] == 'n' || answer[0] == 'N')
+    {
       printf("\nContinuing\n");
       fflush(stdout);
-      /* 
+      /*
        * Reset Ctrl-C counter
        */
       ctrl_c_count = 0;
     }
-    else {
+    else
+    {
       printf("\nExiting...\n");
       fflush(stdout);
       exit(0);
@@ -50,40 +56,66 @@ void catch_tstp(int sig_num)
 /* Implement alarm handler - following catch_int and catch_tstp signal handlers */
 /* If the user DOES NOT RESPOND before the alarm time elapses, the program should exit */
 /* If the user RESPONDEDS before the alarm time elapses, the alarm should be cancelled */
-//YOUR CODE
+// YOUR CODE
 
-int main(int argc, char* argv[])
+void alarm_handler(int sig_num)
+{
+  printf("\nTime expired. Exiting...\n");
+  fflush(stdout);
+  exit(0);
+}
+
+int main(int argc, char *argv[])
 {
   struct sigaction sa;
-  
+
   /* STEP - 2 (10 points) */
   /* clear the memory at sa - by filling up the memory location at sa with the value 0 till the size of sa, using the function memset */
   /* type "man memset" on the terminal and take reference from it */
   /* if the sa memory location is reset this way, then no garbage value can create undefined behavior with the signal handlers */
-  //YOUR CODE
+  // YOUR CODE
 
-  sigset_t mask_set;  /* used to set a signal masking set. */
+  // gets the memory location of sa, 0 is the value to fill the locations with, and sizeof(sa) gets the size of sa to be filled
+  memset(&sa, 0, sizeof(sa));
+
+  sigset_t mask_set; /* used to set a signal masking set. */
 
   /* STEP - 3 (10 points) */
   /* setup mask_set - fill up the mask_set with all the signals to block*/
-  //YOUR CODE
-  
+  // YOUR CODE
+
+  // this fills mask_set with the signals to block
+  sigfillset(&mask_set);
+
   /* STEP - 4 (10 points) */
   /* ensure in the mask_set that the alarm signal does not get blocked while in another signal handler */
-  //YOUR CODE
-  
+  // YOUR CODE
+
+  // this removes SIGALRM from the mask set so it doesn't get blocked
+  sigdelset(&mask_set, SIGALRM);
+
   /* STEP - 5 (20 points) */
   /* set signal handlers for SIGINT, SIGTSTP and SIGALRM */
-  //YOUR CODE
-  
+  // YOUR CODE
+
+  //
+  sa.sa_handler = catch_int;
+  sa.sa_mask = mask_set;
+  sigaction(SIGINT, &sa, NULL);
+
+  sa.sa_handler = catch_tstp;
+  sigaction(SIGTSTP, &sa, NULL);
+
+  sa.sa_handler = alarm_handler;
+  sigaction(SIGALRM, &sa, NULL);
+
   /* STEP - 6 (10 points) */
   /* ensure that the program keeps running to receive the signals */
-  //YOUR CODE
-  while(1)
+  // YOUR CODE
+  while (1)
   {
-    pause();
+    int pause(void);
   }
 
   return 0;
 }
-
