@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OS Midterm Cheat Sheet</title>
+<style>
+  @page {
+    size: letter portrait;
+    margin: 0.3in;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7.4pt;
+    line-height: 1.12;
+    margin: 0;
+    color: #000;
+  }
+  .page {
+    page-break-after: always;
+    break-after: page;
+    height: 10.4in;
+    overflow: hidden;
+  }
+  .page:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+  .columns {
+    column-count: 2;
+    column-gap: 0.22in;
+  }
+  h1 {
+    font-size: 11pt;
+    text-align: center;
+    margin: 0 0 0.04in 0;
+    border-bottom: 1.5px solid #000;
+    padding-bottom: 0.02in;
+  }
+  h2 {
+    font-size: 8.2pt;
+    margin: 0.06in 0 0.02in 0;
+    background: #e8e8e8;
+    padding: 0.02in 0.04in;
+    border-left: 3px solid #333;
+  }
+  h3 {
+    font-size: 7.6pt;
+    margin: 0.04in 0 0.01in 0;
+    text-decoration: underline;
+  }
+  p, ul, ol {
+    margin: 0.02in 0 0.03in 0;
+    padding-left: 0.12in;
+  }
+  ul, ol { padding-left: 0.16in; }
+  li { margin: 0.01in 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 6.8pt;
+    margin: 0.04in 0;
+  }
+  th, td {
+    border: 1px solid #888;
+    padding: 0.02in 0.03in;
+    vertical-align: top;
+  }
+  th { background: #f0f0f0; }
+  code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 6.8pt;
+    background: #f4f4f4;
+    padding: 0 1px;
+  }
+  .small { font-size: 6.6pt; }
+  .tight li { margin: 0; }
+  .box {
+    border: 1px solid #666;
+    padding: 0.03in 0.05in;
+    margin: 0.04in 0;
+  }
+  .avoid-break { break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1: FRONT ================= -->
+<div class="page">
+  <h1>Operating Systems Midterm Cheat Sheet — Front</h1>
+
+  <div class="columns">
+
+    <!-- Ch1 -->
+    <h2>Ch1: OS Goals, Operation, Evolution</h2>
+    <p><b>OS</b> = intermediary between user &amp; hardware.</p>
+    <ul>
+      <li><b>User view:</b> ease of use, abstraction, powerful instructions, easy to run programs.</li>
+      <li><b>System view:</b> resource allocator (CPU, memory, I/O, files, network); control program.</li>
+    </ul>
+    <p><b>OS goals:</b> execute user programs; make solving easier; convenient; efficient hardware use.</p>
+    <p><b>Components:</b> Hardware → OS → Application programs → Users.</p>
+
+    <h3>Boot / Operation</h3>
+    <ul>
+      <li>Bootstrap initializes CPU regs, device controllers, memory; loads OS kernel.</li>
+      <li>OS is <b>interrupt-driven</b>.</li>
+      <li>Interrupt → CPU transfers to ISR via <b>Interrupt Vector Table (IVT)</b> (fixed address).</li>
+      <li><b>Dual-mode:</b> user mode &amp; kernel mode. Privileged instructions only in kernel. Syscalls/interrupts/returns change mode.</li>
+    </ul>
+
+    <h3>Evolution</h3>
+    <table>
+      <tr><th>Type</th><th>Key Idea</th><th>Goal</th></tr>
+      <tr><td>Batch</td><td>Jobs run one after another</td><td>Simple, no interactivity</td></tr>
+      <tr><td>Multiprogramming</td><td>Multiple jobs in memory; switch on I/O wait</td><td>Max CPU throughput</td></tr>
+      <tr><td>Time-sharing</td><td>Frequent CPU switches; interactive</td><td>Min response time</td></tr>
+      <tr><td>Distributed</td><td>Networked separate computers</td><td>Resource sharing</td></tr>
+      <tr><td>Virtualization</td><td>Hypervisor runs OSes</td><td>Isolation, testing</td></tr>
+    </table>
+
+    <h3>Protection</h3>
+    <ul>
+      <li>Address space separation.</li>
+      <li>Dual-mode + privileged instructions.</li>
+      <li>Timer prevents infinite loops / resource hogging.</li>
+      <li>System calls controlled entry to kernel.</li>
+    </ul>
+
+    <h3>Storage Hierarchy</h3>
+    <p>Registers &lt; Cache &lt; Main Memory &lt; SSD &lt; Magnetic Disk</p>
+    <p class="small">Faster = smaller = closer to CPU. Managed by: compiler (regs), hardware (cache), OS (memory/disk).</p>
+
+    <h3>Virtualization Abstraction</h3>
+    <table>
+      <tr><th>Reality</th><th>Abstraction</th></tr>
+      <tr><td>Single CPU</td><td>Multiple CPUs</td></tr>
+      <tr><td>Limited RAM</td><td>Infinite capacity</td></tr>
+      <tr><td>Mechanical disk</td><td>File system</td></tr>
+      <tr><td>Insecure network</td><td>Reliable/secure</td></tr>
+      <tr><td>Many physical machines</td><td>Single machine</td></tr>
+    </table>
+
+    <!-- Ch2 -->
+    <h2>Ch2: OS Services, Syscalls, Structures, VMs</h2>
+    <p><b>User services:</b> UI (CLI/GUI/touch), program execution, I/O, file-system manipulation, IPC, error detection.</p>
+    <p><b>Efficient operation:</b> resource allocation, accounting, protection &amp; security.</p>
+
+    <h3>System Calls</h3>
+    <ul>
+      <li>Programming interface to OS services; request privileged service.</li>
+      <li>Usually via <b>API</b> (Win32, POSIX) rather than direct syscall.</li>
+      <li>Implementation: software trap; register holds syscall number.</li>
+      <li><b>Parameter passing:</b> registers (fast, limited); block/table on stack (pass stack location in reg); stack (push/pop).</li>
+    </ul>
+
+    <h3>Syscall Types &amp; Examples</h3>
+    <ul class="tight">
+      <li>Process control: <code>fork()</code>, <code>exit()</code>, <code>wait()</code></li>
+      <li>File management: <code>open()</code>, <code>read()</code>, <code>write()</code>, <code>close()</code></li>
+      <li>Device management: <code>ioctl()</code>, <code>read()</code>, <code>write()</code></li>
+      <li>Information maintenance: <code>getpid()</code>, <code>sleep()</code>, <code>alarm()</code></li>
+      <li>Communications: <code>pipe()</code>, <code>shmget()</code>, <code>mmap()</code></li>
+      <li>Protection: <code>chmod()</code>, <code>umask()</code>, <code>chown()</code></li>
+    </ul>
+
+    <h3>System Programs</h3>
+    <p class="small">File mgmt (<code>mkdir</code>, <code>cp</code>, <code>rm</code>, <code>ls</code>); status (<code>date</code>, <code>ps</code>, <code>top</code>); modify (<code>vi</code>, <code>grep</code>, <code>find</code>); lang support (<code>gcc</code>, <code>gdb</code>); load/exec; comm (<code>ssh</code>, <code>mail</code>, <code>ftp</code>).</p>
+
+    <h3>Toolchain</h3>
+    <p class="small">Source → Compiler → Assembly → Assembler → Object → Linker → Executable → Loader → Program in memory.</p>
+
+    <h3>Design</h3>
+    <p>Policy = what; Mechanism = how. High-level lang: easier, portable; assembly: efficient.</p>
+
+    <h3>OS Structures</h3>
+    <table>
+      <tr><th>Structure</th><th>Characteristics</th><th>Pros</th><th>Cons</th></tr>
+      <tr><td>Monolithic</td><td>MS-DOS, UNIX; poor separation</td><td>Fast</td><td>Hard to maintain</td></tr>
+      <tr><td>Layered</td><td>Layers 0..N</td><td>Modular, debug</td><td>Less efficient</td></tr>
+      <tr><td>Microkernel</td><td>User space; message passing</td><td>Extensible, reliable, secure</td><td>Overhead</td></tr>
+      <tr><td>Modules</td><td>Core + dynamic modules</td><td>Flexible</td><td>Less clean</td></tr>
+      <tr><td>Hybrid</td><td>Combine (Linux, Windows, Mac)</td><td>Practical</td><td>Complex</td></tr>
+    </table>
+
+    <h3>Virtual Machines</h3>
+    <ul>
+      <li>Hypervisor controls host hardware; guest gets virtual copy.</li>
+      <li>Benefits: multiple OS, isolation, testing, consolidation.</li>
+      <li>Java VM: class loader + Java interpreter → portability.</li>
+    </ul>
+
+  </div>
+</div>
+
+<!-- ================= PAGE 2: BACK ================= -->
+<div class="page">
+  <h1>Operating Systems Midterm Cheat Sheet — Back</h1>
+
+  <div class="columns">
+
+    <!-- Ch3 -->
+    <h2>Ch3: Processes, Scheduling, IPC</h2>
+
+    <h3>Process vs Program</h3>
+    <ul>
+      <li>Program = passive (text only). Process = active (program in execution).</li>
+      <li>Process has: code, data, PC, heap, stack, registers, PCB.</li>
+    </ul>
+
+    <h3>Process Memory</h3>
+    <table>
+      <tr><th>Region</th><th>Holds</th><th>Allocation</th></tr>
+      <tr><td>Text</td><td>Program binary</td><td>On creation</td></tr>
+      <tr><td>Data</td><td>Global/static</td><td>On creation</td></tr>
+      <tr><td>Heap</td><td>Dynamic data</td><td>Explicit/implicit</td></tr>
+      <tr><td>Stack</td><td>Local vars, function calls</td><td>Automatic</td></tr>
+    </table>
+
+    <h3>Process States &amp; Transitions</h3>
+    <ul class="tight">
+      <li>New → Ready → Running → Terminated</li>
+      <li>Running → Waiting (I/O/event wait)</li>
+      <li>Waiting → Ready (I/O/event completion)</li>
+      <li>Running → Ready (interrupt)</li>
+      <li>Ready → Running (dispatch)</li>
+    </ul>
+
+    <h3>PCB</h3>
+    <p>State, PC, CPU regs, scheduling info, memory mgmt info, accounting, I/O status.</p>
+    <p><b>Context Switch:</b> save current process state, restore next. Overhead. Mode switch ≠ context switch.</p>
+
+    <h3>Scheduling</h3>
+    <ul>
+      <li>Job queue = all processes; Ready queue = ready; Device queues = waiting I/O.</li>
+      <li><b>Long-term:</b> selects jobs into ready queue; controls degree of multiprogramming.</li>
+      <li><b>Short-term:</b> selects next process for CPU; invoked frequently.</li>
+    </ul>
+
+    <h3>Process Creation / Termination</h3>
+    <ul>
+      <li><code>fork()</code> creates child; <code>exec()</code> replaces memory; <code>wait()</code> waits.</li>
+      <li>Sharing: all, subset, none (Unix). Execution: concurrent (Unix) or wait.</li>
+      <li><code>exit()</code> terminates; OS deallocates. Parent may abort child. Orphan on Unix gets new parent.</li>
+    </ul>
+
+    <h3>IPC Models</h3>
+    <table>
+      <tr><th>Shared Memory</th><th>Message Passing</th></tr>
+      <tr><td>Fast</td><td>Slower</td></tr>
+      <tr><td>Convenient</td><td>Easier for distributed</td></tr>
+      <tr><td>Needs sync</td><td>No conflict resolution</td></tr>
+      <tr><td>Kernel only for setup</td><td>Kernel each time</td></tr>
+    </table>
+
+    <p><b>Message Passing:</b> <code>send()</code>, <code>receive()</code>. Direct (name proc) vs indirect (mailbox/port). Blocking vs non-blocking. Buffering: zero, bounded, unbounded.</p>
+
+    <h3>Unix IPC Mechanisms</h3>
+    <ul>
+      <li><b>Pipes:</b> anonymous, parent-child, unidirectional, FIFO, exists with processes.</li>
+      <li><b>FIFOs:</b> named, unrelated processes, half-duplex, persists.</li>
+      <li><b>Message queues:</b> <code>msgget</code>, <code>msgsnd</code>, <code>msgrcv</code>, <code>msgctl</code>; typed messages.</li>
+      <li><b>Shared memory:</b> <code>shmget</code>, <code>shmat</code>, <code>shmdt</code>, <code>shmctl</code>.</li>
+      <li><b>Sockets:</b> Unix domain. Server: <code>socket</code>, <code>bind</code>, <code>listen</code>, <code>accept</code>, <code>recv/send</code>, <code>close</code>. Client: <code>socket</code>, <code>connect</code>, <code>send/recv</code>, <code>close</code>.</li>
+      <li><b>RPC/RMI:</b> stubs marshal parameters.</li>
+    </ul>
+
+    <!-- Ch4 -->
+    <h2>Ch4: Threads — User vs Kernel Level Only</h2>
+
+    <p><b>Thread = lightweight process.</b> Independent flow of control.</p>
+    <ul>
+      <li><b>Shared:</b> code, data, open files, signals, cwd, uid/gid.</li>
+      <li><b>Own:</b> thread ID, registers, stack pointer, stack, signal mask, scheduling props, return value.</li>
+    </ul>
+    <p><b>Benefits:</b> responsiveness, resource sharing, economy, scalability.</p>
+
+    <table>
+      <tr><th></th><th>User-Level Threads</th><th>Kernel-Level Threads</th></tr>
+      <tr><td>Managed by</td><td>User library</td><td>Kernel</td></tr>
+      <tr><td>Speed</td><td>Fast creation/switching</td><td>Slower</td></tr>
+      <tr><td>Blocking I/O</td><td>One blocks all</td><td>Others can run</td></tr>
+      <tr><td>SMP / Multicore</td><td>Cannot exploit</td><td>Can exploit</td></tr>
+      <tr><td>Examples</td><td>Green threads, GNU Portable Threads</td><td>Windows, Linux, Solaris</td></tr>
+    </table>
+
+    <h3>Linux Threads</h3>
+    <ul>
+      <li>Called <b>tasks</b>.</li>
+      <li>Created via <code>clone()</code>.</li>
+      <li>Flags: <code>CLONE_VM</code> (same memory), <code>CLONE_FS</code> (fs info), <code>CLONE_FILES</code> (open files), <code>CLONE_SIGHAND</code> (signal handlers).</li>
+    </ul>
+
+    <h2>High-Yield Comparisons</h2>
+    <ul>
+      <li><b>Multiprogramming vs Time-sharing:</b> throughput vs response time.</li>
+      <li><b>Process vs Thread:</b> separate addr space vs shared; expensive vs cheap context switch; strong vs less protection.</li>
+      <li><b>Shared Memory vs Message Passing:</b> fast/sync vs slower/easy.</li>
+      <li><b>User vs Kernel Threads:</b> fast/blocking/no SMP vs slower/blocking handled/SMP.</li>
+    </ul>
+
+  </div>
+</div>
+
+</body>
+</html>
