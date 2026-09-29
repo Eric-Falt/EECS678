@@ -15,7 +15,7 @@
 // On a little endian processor, this will print "CAT".
 //
 // In fact the "union" structure will allow two unrelated types to be read as
-// each other without producing so mu./ch as a warning. There are valid use cases
+// each other without producing so much as a warning. There are valid use cases
 // for this design pattern, however it is best to avoid them if at all possible.
 //
 // In c there is no implicit protection against accessing beyond an array
@@ -32,15 +32,14 @@
 //
 // TLDR: Pay very careful attention to how this structure is laid out in memory
 // and what is stored in it when looking at gdb and valgrind.
-struct Storage
-{
+struct Storage {
   intptr_t num_bugs_on_mars;
-  const char *scary_bug;
-  char *sentence[7]; // It might be necessary to grow this array.
-  const char *colorful_bug;
+  const char* scary_bug;
+  char* sentence[7]; // It might be necessary to grow this array.
+  const char* colorful_bug;
   intptr_t num_bugs_on_earth;
   intptr_t num_bugs_on_venus;
-  char *useless_bug;
+  char* useless_bug;
 };
 
 // Print a **NULL terminated** array of strings to standard out (This is not
@@ -49,10 +48,8 @@ struct Storage
 //
 // An example of a NULL terminated array of strings is:
 // char** strs = { "Hello", "World!", NULL };
-void echo(char **strs)
-{
-  if (*strs != NULL)
-  {
+void echo(char** strs) {
+  if (*strs != NULL) {
     printf("%s ", *strs);
     fflush(stdout);
 
@@ -62,10 +59,9 @@ void echo(char **strs)
 
 // Print a **NULL terminated** array of strings to standard out and then print the
 // array backwards (This is broken).
-void echoohce(char **strs)
-{
-  char **iter;
-  char **stop_beginning = strs - 1; // HINT: What could this possibly used for?
+void echoohce(char** strs) {
+  char** iter;
+  char** stop_beginning = strs - 1; // HINT: What could this possibly used for?
 
   // FIXME: Something is wrong in this for loop. It is printing garbage characters.
   for (iter = strs; *iter != NULL; ++iter)
@@ -86,8 +82,7 @@ void echoohce(char **strs)
   fflush(stdout);
 }
 
-int main(int argc, char **argv)
-{
+int main(int argc, char** argv) {
   struct Storage bug_info;
 
   // Initialize structure
@@ -108,31 +103,36 @@ int main(int argc, char **argv)
   bug_info.sentence[5] = strdup("a");
   bug_info.sentence[6] = NULL;
 
+
+  // Initialize num_bugs_on_mars
+  bug_info.num_bugs_on_mars = 0;
+
   // Print the current bug population on various planets
   printf("The current bug population of Earth is about: %zu\n",
          bug_info.num_bugs_on_earth); // 1480000000000000000
   printf("The current bug population of Mars is about: %zu\n",
-         bug_info.num_bugs_on_mars); // 0
+         bug_info.num_bugs_on_mars);  // 0
   printf("The current bug population of Venus is about: %zu\n",
          bug_info.num_bugs_on_venus); // 0
 
-  // Initialize num_bugs_on_mars
-  bug_info.num_bugs_on_mars = 0;
+  
 
   // Print the following line:
   // "The total bug population of the solar system is: 1480000000000000000"
   printf("The total bug population of the solar system is: %zu\n",
          bug_info.num_bugs_on_mars +
-             bug_info.num_bugs_on_venus +
-             bug_info.num_bugs_on_earth);
+         bug_info.num_bugs_on_venus +
+         bug_info.num_bugs_on_earth);
 
   // Print "The most useless bug is a mosquito"
   echo(bug_info.sentence);
   printf("%s\n", bug_info.useless_bug);
 
-  // Change the adjective to something appropriate for butterflies
+  
   free(bug_info.sentence[2]);
+  // Change the adjective to something appropriate for butterflies
   bug_info.sentence[2] = strdup("colorful");
+
   // Print "The most colorful bug is a butterfly"
   echo(bug_info.sentence);
   printf("%s\n", bug_info.colorful_bug);
@@ -143,15 +143,12 @@ int main(int argc, char **argv)
   // Free all duplicated strings
   free(bug_info.sentence[0]);
   free(bug_info.sentence[1]);
-
   free(bug_info.sentence[2]);
-  bug_info.sentence[2] = NULL;
-
   free(bug_info.sentence[3]);
   free(bug_info.sentence[4]);
   free(bug_info.sentence[5]);
 
-  printf("The current bug adjective is: %s\n", bug_info.sentence[2]);
+  bug_info.sentence[2] = NULL;
 
   // Prints "The current bug adjective is: (null)"
   printf("The current bug adjective is: %s\n", bug_info.sentence[2]);

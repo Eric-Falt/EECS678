@@ -33,6 +33,7 @@ void catch_int(int sig_num)
       /*
        * Reset Ctrl-C counter
        */
+      alarm(0);
       ctrl_c_count = 0;
     }
     else
@@ -86,7 +87,7 @@ int main(int argc, char *argv[])
 
   // this fills mask_set with the signals to block
   sigfillset(&mask_set);
-
+  
   /* STEP - 4 (10 points) */
   /* ensure in the mask_set that the alarm signal does not get blocked while in another signal handler */
   // YOUR CODE
@@ -97,8 +98,7 @@ int main(int argc, char *argv[])
   /* STEP - 5 (20 points) */
   /* set signal handlers for SIGINT, SIGTSTP and SIGALRM */
   // YOUR CODE
-
-  //
+ 
   sa.sa_handler = catch_int;
   sa.sa_mask = mask_set;
   sigaction(SIGINT, &sa, NULL);

@@ -28,9 +28,9 @@ int main(int argc, char *argv[])
 
   // STEP 1
   // Initialize pipes p1, p2, p3
-  pipe(1);
-  pipe(2);
-  pipe(3);
+  pipe(p1);
+  pipe(p2);
+  pipe(p3);
 
   pid_1 = fork();
   if (pid_1 == 0)
@@ -51,10 +51,10 @@ int main(int argc, char *argv[])
     // STEP 3
     // Invoke execl for du (use DU_EXEC as the path)
 
-    if ((execl(DU_EXEC, "du", argv[1], (char *)NULL)) < 0)
+    if ((execl(DU_EXEC, "du", "-ak", argv[1], (char *)NULL)) < 0)
     {
       printf(stderr, "\n Error execing DU ERROR #%d\n", errno);
-      return EXIT_FAILURE
+      return EXIT_FAILURE;
     }
     exit(0);
   }
@@ -74,8 +74,6 @@ int main(int argc, char *argv[])
     // STEP 5
     // Invoke execl for sort  (use SORT_EXEC as the path)
 
-    exit(0);
-
     dup2(p1[0], STDIN_FILENO);
     dup2(p2[1], STDOUT_FILENO);
     close(p1[1]);
@@ -83,9 +81,9 @@ int main(int argc, char *argv[])
     close(p3[1]);
     close(p3[0]);
 
-    if ((execl(SORT_EXEC, "nr", (char *)NULL)) < 0)
+    if ((execl(SORT_EXEC, "sort", "-nr", (char *)NULL)) < 0)
     {
-      printf(stderr, "\n Error execing SORT ERROR #%d\n", errno);
+      fprintf(stderr, "\n Error execing SORT ERROR #%d\n", errno);
       return EXIT_FAILURE;
     }
     exit(0);
@@ -113,7 +111,7 @@ int main(int argc, char *argv[])
     close(p2[1]);
     close(p3[0]);
 
-    if ((execl(HEAD_EXEC, "n", arg[2], (char *)NULL)) < 0)
+    if ((execl(HEAD_EXEC, "head", "-n", argv[2], (char *)NULL)) < 0)
     {
       printf(stderr, "\n Error execing HEAD ERROR #%d\n", errno);
       return EXIT_FAILURE;
@@ -140,7 +138,7 @@ int main(int argc, char *argv[])
     close(p2[0]);
     close(p3[1]);
 
-    if ((execl(CUT_EXEC, "f2", (char *)NULL)) < 0)
+    if ((execl(CUT_EXEC, "cut", "-f2", (char *)NULL)) < 0)
     {
       printf(stderr, "\n Error execing CUT ERROR #%d\n", errno);
       return EXIT_FAILURE;
@@ -148,6 +146,13 @@ int main(int argc, char *argv[])
 
     exit(0);
   }
+  close(p3[0]);
+  close(p1[0]);
+  close(p1[1]);
+  close(p2[1]);
+  close(p2[0]);
+  close(p3[1]);
+  
   if ((waitpid(pid_1, &status, 0)) == -1)
   {
     fprintf(stderr, "Process 1 encountered an error. ERROR%d", errno);
