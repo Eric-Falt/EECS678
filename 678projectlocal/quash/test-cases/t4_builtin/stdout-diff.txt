@@ -1,0 +1,8 @@
+1c1,4
+< /home/a850w449/Desktop/678project/quash/test-cases/t4_builtin/sandbox/home/a850w449/Desktop/678project/quash/test-cases/t4_builtin/sandbox
+\ No newline at end of file
+---
+> sandbox
+> sandbox
+> hello
+> hello

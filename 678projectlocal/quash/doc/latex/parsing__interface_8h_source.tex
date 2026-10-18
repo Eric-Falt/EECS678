@@ -1,0 +1,44 @@
+\doxysection{parsing\+\_\+interface.\+h}
+\hypertarget{parsing__interface_8h_source}{}\label{parsing__interface_8h_source}\index{src/parsing/parsing\_interface.h@{src/parsing/parsing\_interface.h}}
+\mbox{\hyperlink{parsing__interface_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SRC\_PARSING\_PARSING\_INTERFACE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SRC\_PARSING\_PARSING\_INTERFACE\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{command_8h}{command.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{deque_8h}{deque.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{quash_8h}{quash.h}}"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structRedirect}{Redirect}}\ \{}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structRedirect_ab0e76f7e58a26d52216c8c4bfc9c2e83}{in}};\ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structRedirect_a9d5efc0a96275e13eba0e71450771952}{out}};\ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structRedirect_aea1d3bd9c3b6e1dbf1661b616df9818e}{append}};\ }
+\DoxyCodeLine{00026\ \}\ \mbox{\hyperlink{structRedirect}{Redirect}};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00036\ \mbox{\hyperlink{deque_8h_a091cfc1289538b13036bcd36d12a3c01}{IMPLEMENT\_DEQUE\_STRUCT}}(CmdStrs,\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \mbox{\hyperlink{deque_8h_a091cfc1289538b13036bcd36d12a3c01}{IMPLEMENT\_DEQUE\_STRUCT}}(Cmds,\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \mbox{\hyperlink{deque_8h_af9dc10c0d5c775afe3053629e39f8c36}{PROTOTYPE\_DEQUE}}(CmdStrs,\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{deque_8h_af9dc10c0d5c775afe3053629e39f8c36}{PROTOTYPE\_DEQUE}}(Cmds,\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}});}
+\DoxyCodeLine{00052\ \textcolor{comment}{/*************************************************************}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ *\ Functions\ used\ by\ the\ parser}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ *************************************************************/}}
+\DoxyCodeLine{00068\ \mbox{\hyperlink{structRedirect}{Redirect}}\ mk\_redirect(\textcolor{keywordtype}{char}*\ in,\ \textcolor{keywordtype}{char}*\ out,\ \textcolor{keywordtype}{bool}\ append);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00080\ \textcolor{keywordtype}{char}*\ interpret\_complex\_string\_token(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{comment}{/*************************************************************}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ *\ Functions\ used\ by\ the\ parser}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ *************************************************************/}}
+\DoxyCodeLine{00097\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}}*\ parse(\mbox{\hyperlink{structQuashState}{QuashState}}*\ state);}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{void}\ destroy\_parser();}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

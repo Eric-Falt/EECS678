@@ -1,0 +1,162 @@
+==1833074== Memcheck, a memory error detector
+==1833074== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==1833074== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==1833074== Command: /home/a850w449/Desktop/678project/quash/quash
+==1833074== 
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+==1833177== 
+==1833177== HEAP SUMMARY:
+==1833177==     in use at exit: 17,722 bytes in 5 blocks
+==1833177==   total heap usage: 7 allocs, 2 frees, 25,994 bytes allocated
+==1833177== 
+==1833177== LEAK SUMMARY:
+==1833177==    definitely lost: 0 bytes in 0 blocks
+==1833177==    indirectly lost: 0 bytes in 0 blocks
+==1833177==      possibly lost: 0 bytes in 0 blocks
+==1833177==    still reachable: 17,722 bytes in 5 blocks
+==1833177==         suppressed: 0 bytes in 0 blocks
+==1833177== Reachable blocks (those to which a pointer was found) are not shown.
+==1833177== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833177== 
+==1833177== For lists of detected and suppressed errors, rerun with: -s
+==1833177== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+==1833192== 
+==1833192== HEAP SUMMARY:
+==1833192==     in use at exit: 17,722 bytes in 5 blocks
+==1833192==   total heap usage: 10 allocs, 5 frees, 27,338 bytes allocated
+==1833192== 
+==1833192== LEAK SUMMARY:
+==1833192==    definitely lost: 0 bytes in 0 blocks
+==1833192==    indirectly lost: 0 bytes in 0 blocks
+==1833192==      possibly lost: 0 bytes in 0 blocks
+==1833192==    still reachable: 17,722 bytes in 5 blocks
+==1833192==         suppressed: 0 bytes in 0 blocks
+==1833192== Reachable blocks (those to which a pointer was found) are not shown.
+==1833192== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833192== 
+==1833192== For lists of detected and suppressed errors, rerun with: -s
+==1833192== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+==1833201== 
+==1833201== HEAP SUMMARY:
+==1833201==     in use at exit: 17,722 bytes in 5 blocks
+==1833201==   total heap usage: 13 allocs, 8 frees, 28,682 bytes allocated
+==1833201== 
+==1833201== LEAK SUMMARY:
+==1833201==    definitely lost: 0 bytes in 0 blocks
+==1833201==    indirectly lost: 0 bytes in 0 blocks
+==1833201==      possibly lost: 0 bytes in 0 blocks
+==1833201==    still reachable: 17,722 bytes in 5 blocks
+==1833201==         suppressed: 0 bytes in 0 blocks
+==1833201== Reachable blocks (those to which a pointer was found) are not shown.
+==1833201== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833201== 
+==1833201== For lists of detected and suppressed errors, rerun with: -s
+==1833201== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+IMPLEMENT ME: src/execute.c(line 104): run_generic()
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+ERROR: Failed to execute program: Success
+IMPLEMENT ME: src/execute.c(line 104): run_generic()
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+ERROR: Failed to execute program: Success
+IMPLEMENT ME: src/execute.c(line 49): lookup_env()
+IMPLEMENT ME: src/execute.c(line 104): run_generic()
+==1833259== 
+==1833259== HEAP SUMMARY:
+==1833259==     in use at exit: 17,722 bytes in 5 blocks
+==1833259==   total heap usage: 18 allocs, 13 frees, 30,058 bytes allocated
+==1833259== 
+IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 312): create_process()
+==1833259== LEAK SUMMARY:
+==1833259==    definitely lost: 0 bytes in 0 blocks
+==1833259==    indirectly lost: 0 bytes in 0 blocks
+==1833259==      possibly lost: 0 bytes in 0 blocks
+==1833259==    still reachable: 17,722 bytes in 5 blocks
+==1833259==         suppressed: 0 bytes in 0 blocks
+==1833259== Reachable blocks (those to which a pointer was found) are not shown.
+==1833259== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833259== 
+==1833259== For lists of detected and suppressed errors, rerun with: -s
+==1833259== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+ERROR: Failed to execute program: Success
+==1833281== 
+==1833281== HEAP SUMMARY:
+==1833281==     in use at exit: 17,722 bytes in 5 blocks
+==1833281==   total heap usage: 23 allocs, 18 frees, 31,434 bytes allocated
+==1833281== 
+IMPLEMENT ME: src/execute.c(line 353): run_script()
+==1833281== LEAK SUMMARY:
+==1833281==    definitely lost: 0 bytes in 0 blocks
+==1833281==    indirectly lost: 0 bytes in 0 blocks
+==1833281==      possibly lost: 0 bytes in 0 blocks
+==1833281==    still reachable: 17,722 bytes in 5 blocks
+==1833281==         suppressed: 0 bytes in 0 blocks
+==1833281== Reachable blocks (those to which a pointer was found) are not shown.
+==1833281== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833281== 
+==1833281== For lists of detected and suppressed errors, rerun with: -s
+==1833281== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 104): run_generic()
+ERROR: Failed to execute program: Success
+==1833304== 
+==1833304== HEAP SUMMARY:
+==1833304==     in use at exit: 17,722 bytes in 5 blocks
+==1833304==   total heap usage: 27 allocs, 22 frees, 32,794 bytes allocated
+==1833304== 
+==1833304== LEAK SUMMARY:
+==1833304==    definitely lost: 0 bytes in 0 blocks
+==1833304==    indirectly lost: 0 bytes in 0 blocks
+==1833304==      possibly lost: 0 bytes in 0 blocks
+==1833304==    still reachable: 17,722 bytes in 5 blocks
+==1833304==         suppressed: 0 bytes in 0 blocks
+==1833304== Reachable blocks (those to which a pointer was found) are not shown.
+==1833304== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833304== 
+==1833304== For lists of detected and suppressed errors, rerun with: -s
+==1833304== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1833343== 
+==1833343== HEAP SUMMARY:
+==1833343==     in use at exit: 17,722 bytes in 5 blocks
+==1833343==   total heap usage: 32 allocs, 27 frees, 34,170 bytes allocated
+==1833343== 
+==1833343== LEAK SUMMARY:
+==1833343==    definitely lost: 0 bytes in 0 blocks
+==1833343==    indirectly lost: 0 bytes in 0 blocks
+==1833343==      possibly lost: 0 bytes in 0 blocks
+==1833343==    still reachable: 17,722 bytes in 5 blocks
+==1833343==         suppressed: 0 bytes in 0 blocks
+==1833343== Reachable blocks (those to which a pointer was found) are not shown.
+==1833343== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==1833343== 
+==1833343== For lists of detected and suppressed errors, rerun with: -s
+==1833343== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==1833074== 
+==1833074== HEAP SUMMARY:
+==1833074==     in use at exit: 0 bytes in 0 blocks
+==1833074==   total heap usage: 32 allocs, 32 frees, 34,170 bytes allocated
+==1833074== 
+==1833074== All heap blocks were freed -- no leaks are possible
+==1833074== 
+==1833074== For lists of detected and suppressed errors, rerun with: -s
+==1833074== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

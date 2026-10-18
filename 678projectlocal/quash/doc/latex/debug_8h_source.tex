@@ -1,0 +1,21 @@
+\doxysection{debug.\+h}
+\hypertarget{debug_8h_source}{}\label{debug_8h_source}\index{src/debug.h@{src/debug.h}}
+\mbox{\hyperlink{debug_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifdef\ DEBUG}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\ \ define\ PRINT\_DEBUG(fmt,\ ...)\ \(\backslash\)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ fprintf(stderr,\ "{}DEBUG:\ \%s(),\ \%s:\%d:\ "{}\ fmt,\ \ \ \ \ \ \ \ \ \(\backslash\)}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_func\_\_,\ \_\_FILE\_\_,\ \_\_LINE\_\_,\ \#\#\_\_VA\_ARGS\_\_)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ define\ IFDEBUG(x)\ x}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ Does\ nothing}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#\ \ define\ PRINT\_DEBUG(fmt,\ ...)}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Does\ nothing}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#\ \ define\ IFDEBUG(x)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00038\ }
+
+\end{DoxyCode}

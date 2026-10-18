@@ -1,0 +1,6 @@
+1c1,2
+< /home/a850w449/Desktop/678project/quash/test-cases/t2_export/sandbox/home/a850w449/Desktop/678project/quash/test-cases/t2_export/sandbox
+\ No newline at end of file
+---
+> /home/a850w449/Desktop/678project/quash/test-cases/t2_export/sandbox
+> /home/a850w449/Desktop/678project/quash/test-cases/t2_export/sandbox
