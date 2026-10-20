@@ -1,6 +1,9 @@
-0a1,5
-> /home/a850w449/Desktop/678project/quash/test-cases/t3_find_grep/sandbox/dir1/valgrind_expected.txt
-> /home/a850w449/Desktop/678project/quash/test-cases/t3_find_grep/sandbox/dir3/dir3-1/valgrind_expected.txt
-> /home/a850w449/Desktop/678project/quash/test-cases/t3_find_grep/sandbox/dir3/valgrind_expected.txt
-> /home/a850w449/Desktop/678project/quash/test-cases/t3_find_grep/sandbox/.valgrind_expected.txt
-> /home/a850w449/Desktop/678project/quash/test-cases/t3_find_grep/sandbox/valgrind_expected.txt
+1d0
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/dir1/lorem_ipsum.txt
+3,6d1
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/dir2/test1.txt
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/dir2/test2.txt
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/dir2/test3.txt
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/dir3/dir3-1/lorem_ipsum.txt
+9d3
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t3_find_grep/sandbox/lorem_ipsum.txt

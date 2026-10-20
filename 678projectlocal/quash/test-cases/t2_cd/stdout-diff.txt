@@ -1,9 +1,0 @@
-1c1,5
-< /home/a850w449/Desktop/678project/quash/test-cases/t2_cd/sandbox
-\ No newline at end of file
----
-> dir3-1
-> dir3-2
-> valgrind_expected.txt
-> /home/a850w449/Desktop/678project/quash/test-cases/t2_cd/sandbox/dir3
-> /home/a850w449/Desktop/678project/quash/test-cases/t2_cd/sandbox/dir3

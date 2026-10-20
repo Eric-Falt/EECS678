@@ -1,30 +1,14 @@
-==1832816== Memcheck, a memory error detector
-==1832816== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1832816== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1832816== Command: /home/a850w449/Desktop/678project/quash/quash
-==1832816== 
-==1832816== 
-==1832816== HEAP SUMMARY:
-==1832816==     in use at exit: 0 bytes in 0 blocks
-==1832816==   total heap usage: 7 allocs, 7 frees, 25,994 bytes allocated
-==1832816== 
-==1832816== All heap blocks were freed -- no leaks are possible
-==1832816== 
-==1832816== For lists of detected and suppressed errors, rerun with: -s
-==1832816== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==1833139== 
-==1833139== HEAP SUMMARY:
-==1833139==     in use at exit: 17,722 bytes in 5 blocks
-==1833139==   total heap usage: 7 allocs, 2 frees, 25,994 bytes allocated
-==1833139== 
-==1833139== LEAK SUMMARY:
-==1833139==    definitely lost: 0 bytes in 0 blocks
-==1833139==    indirectly lost: 0 bytes in 0 blocks
-==1833139==      possibly lost: 0 bytes in 0 blocks
-==1833139==    still reachable: 17,722 bytes in 5 blocks
-==1833139==         suppressed: 0 bytes in 0 blocks
-==1833139== Reachable blocks (those to which a pointer was found) are not shown.
-==1833139== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1833139== 
-==1833139== For lists of detected and suppressed errors, rerun with: -s
-==1833139== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512282== Memcheck, a memory error detector
+==2512282== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512282== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512282== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512282== 
+==2512282== 
+==2512282== HEAP SUMMARY:
+==2512282==     in use at exit: 0 bytes in 0 blocks
+==2512282==   total heap usage: 7 allocs, 7 frees, 25,994 bytes allocated
+==2512282== 
+==2512282== All heap blocks were freed -- no leaks are possible
+==2512282== 
+==2512282== For lists of detected and suppressed errors, rerun with: -s
+==2512282== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

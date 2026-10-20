@@ -1,94 +1,45 @@
-==1832970== Memcheck, a memory error detector
-==1832970== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==1832970== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==1832970== Command: /home/a850w449/Desktop/678project/quash/quash
-==1832970== 
-IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 312): create_process()
-IMPLEMENT ME: src/execute.c(line 353): run_script()
-IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 312): create_process()
-IMPLEMENT ME: src/execute.c(line 353): run_script()
-IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 312): create_process()
-IMPLEMENT ME: src/execute.c(line 104): run_generic()
-IMPLEMENT ME: src/execute.c(line 353): run_script()
-ERROR: Failed to execute program: Invalid argument
-==1833143== 
-==1833143== HEAP SUMMARY:
-==1833143==     in use at exit: 17,722 bytes in 5 blocks
-==1833143==   total heap usage: 8 allocs, 3 frees, 26,064 bytes allocated
-==1833143== 
-==1833143== LEAK SUMMARY:
-==1833143==    definitely lost: 0 bytes in 0 blocks
-==1833143==    indirectly lost: 0 bytes in 0 blocks
-==1833143==      possibly lost: 0 bytes in 0 blocks
-==1833143==    still reachable: 17,722 bytes in 5 blocks
-==1833143==         suppressed: 0 bytes in 0 blocks
-==1833143== Reachable blocks (those to which a pointer was found) are not shown.
-==1833143== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1833143== 
-==1833143== For lists of detected and suppressed errors, rerun with: -s
-==1833143== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 49): lookup_env()
-IMPLEMENT ME: src/execute.c(line 62): check_jobs_bg_status()
-IMPLEMENT ME: src/execute.c(line 312): create_process()
-==1833151== 
-==1833151== HEAP SUMMARY:
-==1833151==     in use at exit: 17,722 bytes in 5 blocks
-==1833151==   total heap usage: 11 allocs, 6 frees, 27,408 bytes allocated
-==1833151== 
-==1833151== LEAK SUMMARY:
-==1833151==    definitely lost: 0 bytes in 0 blocks
-==1833151==    indirectly lost: 0 bytes in 0 blocks
-==1833151==      possibly lost: 0 bytes in 0 blocks
-==1833151==    still reachable: 17,722 bytes in 5 blocks
-==1833151==         suppressed: 0 bytes in 0 blocks
-==1833151== Reachable blocks (those to which a pointer was found) are not shown.
-==1833151== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1833151== 
-==1833151== For lists of detected and suppressed errors, rerun with: -s
-==1833151== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==1833165== 
-==1833165== HEAP SUMMARY:
-==1833165==     in use at exit: 17,722 bytes in 5 blocks
-==1833165==   total heap usage: 15 allocs, 10 frees, 36,944 bytes allocated
-==1833165== 
-==1833165== LEAK SUMMARY:
-==1833165==    definitely lost: 0 bytes in 0 blocks
-==1833165==    indirectly lost: 0 bytes in 0 blocks
-==1833165==      possibly lost: 0 bytes in 0 blocks
-==1833165==    still reachable: 17,722 bytes in 5 blocks
-==1833165==         suppressed: 0 bytes in 0 blocks
-==1833165== Reachable blocks (those to which a pointer was found) are not shown.
-==1833165== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1833165== 
-==1833165== For lists of detected and suppressed errors, rerun with: -s
-==1833165== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-IMPLEMENT ME: src/execute.c(line 353): run_script()
-IMPLEMENT ME: src/execute.c(line 119): run_echo()
-==1833203== 
-==1833203== HEAP SUMMARY:
-==1833203==     in use at exit: 17,722 bytes in 5 blocks
-==1833203==   total heap usage: 18 allocs, 13 frees, 30,112 bytes allocated
-==1833203== 
-==1833203== LEAK SUMMARY:
-==1833203==    definitely lost: 0 bytes in 0 blocks
-==1833203==    indirectly lost: 0 bytes in 0 blocks
-==1833203==      possibly lost: 0 bytes in 0 blocks
-==1833203==    still reachable: 17,722 bytes in 5 blocks
-==1833203==         suppressed: 0 bytes in 0 blocks
-==1833203== Reachable blocks (those to which a pointer was found) are not shown.
-==1833203== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==1833203== 
-==1833203== For lists of detected and suppressed errors, rerun with: -s
-==1833203== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==1832970== 
-==1832970== HEAP SUMMARY:
-==1832970==     in use at exit: 0 bytes in 0 blocks
-==1832970==   total heap usage: 18 allocs, 18 frees, 30,112 bytes allocated
-==1832970== 
-==1832970== All heap blocks were freed -- no leaks are possible
-==1832970== 
-==1832970== For lists of detected and suppressed errors, rerun with: -s
-==1832970== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512419== Memcheck, a memory error detector
+==2512419== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512419== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512419== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512419== 
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 120): run_echo()
+==2512606== 
+==2512606== HEAP SUMMARY:
+==2512606==     in use at exit: 0 bytes in 0 blocks
+==2512606==   total heap usage: 21 allocs, 21 frees, 37,684 bytes allocated
+==2512606== 
+==2512606== All heap blocks were freed -- no leaks are possible
+==2512606== 
+==2512606== For lists of detected and suppressed errors, rerun with: -s
+==2512606== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512419== 
+==2512419== HEAP SUMMARY:
+==2512419==     in use at exit: 0 bytes in 0 blocks
+==2512419==   total heap usage: 24 allocs, 24 frees, 30,852 bytes allocated
+==2512419== 
+==2512419== All heap blocks were freed -- no leaks are possible
+==2512419== 
+==2512419== For lists of detected and suppressed errors, rerun with: -s
+==2512419== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512664== 
+==2512664== HEAP SUMMARY:
+==2512664==     in use at exit: 0 bytes in 0 blocks
+==2512664==   total heap usage: 25 allocs, 25 frees, 39,044 bytes allocated
+==2512664== 
+==2512664== All heap blocks were freed -- no leaks are possible
+==2512664== 
+==2512664== For lists of detected and suppressed errors, rerun with: -s
+==2512664== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

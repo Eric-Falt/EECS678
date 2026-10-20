@@ -6,7 +6,8 @@
  *
  * @note As you add things to this file you may want to change the method signature
  */
-
+#define _GNU_SOURCE//ajw needs to be included to use suggested get_current_dir_name()
+#include <unistd.h>
 #include "execute.h"
 
 #include <stdio.h>
@@ -34,7 +35,7 @@ char* get_current_directory(bool* should_free) {
   *should_free = false;
 
   //return "get_current_directory()"; //going to try to put ajw at the start of all my comments for easier searching 
-  static char cwd_buf[256]; //ajw if this needs edgecase testing on super long file paths will need a diff implementation
+  static char cwd_buf[1024]; //ajw if this needs edgecase testing on super long file paths will need a diff implementation
   getcwd(cwd_buf, sizeof(cwd_buf)); //TODO ajw i think this works but need to implement some other functions to test properly
   return cwd_buf;                   
 }
@@ -117,7 +118,14 @@ void run_echo(EchoCommand cmd) {
 
   // TODO: Implement echo
   IMPLEMENT_ME();
-  printf("%s", *str);
+  int i = 0;
+  while (str[i] != NULL){ //ajw iterates through args in str 
+    printf("%s ", str[i]);
+
+    i++; 
+  }
+  printf("\n"); //newline to stay inline with test format
+  
 
   // Flush the buffer before returning
   fflush(stdout);
@@ -135,6 +143,7 @@ void run_export(ExportCommand cmd) {
 
   // TODO: Implement export.
   // HINT: This should be quite simple.
+  setenv(env_var, val, 1);
   IMPLEMENT_ME();
 }
 
@@ -143,18 +152,23 @@ void run_cd(CDCommand cmd) {
   // Get the directory name
   const char* dir = cmd.dir;
 
-  // Check if the directory is valid
+  // Check if the directory is valid a
   if (dir == NULL) {
     perror("ERROR: Failed to resolve path");
     return;
   }
 
-  // TODO: Change directory
+  //Change directory
+  char * old_dir = get_current_dir_name(); //get_current_dir_name mallocs into a buffer, requires free 
+  setenv("OLD_PWD", old_dir, 1); //ajw variable to set, value to set, if nonzero overwrite
+  chdir(dir); //ajw changes directory to user string passed in from cmd 
 
-  // TODO: Update the PWD environment variable to be the new current working
+  //Update the PWD environment variable to be the new current working
+  setenv("PWD", dir, 1); //ajw variable to set, value to set, if nonzero overwrite
   // directory and optionally update OLD_PWD environment variable to be the old
   // working directory.
-  IMPLEMENT_ME();
+  free(old_dir);
+  //IMPLEMENT_ME();
 }
 
 // Sends a signal to all processes contained in a job
@@ -176,7 +190,7 @@ void run_pwd() {
   // TODO: Print the current working directory
   bool should_free = false;
   char *cwd = get_current_directory(&should_free);
-  printf("%s", cwd);  //ajw think this works, havent been able to figure out how to test yet
+  printf("%s\n", cwd);  //ajw think this works, havent been able to figure out how to test yet
 
   // Flush the buffer before returning
   fflush(stdout);
@@ -312,8 +326,15 @@ void create_process(CommandHolder holder) {
   // TODO: Setup pipes, redirects, and new process
   IMPLEMENT_ME();
 
-  pid_t pid = fork();
   //TODO: ajw needs to check if command is export,cd,kill those are ran by parent
+  CommandType cmd_type = get_command_type(holder.cmd); //ajw compare command types to catch parent instructions 
+  if (cmd_type == CD || cmd_type == EXPORT || cmd_type == KILL){
+    parent_run_command(holder.cmd);
+    return;
+  }
+
+  pid_t pid = fork();
+  
 
   if (pid < 0){
     perror("error on forking"); //ajw if child pid is less than 0 error occured in process creation processs
@@ -322,7 +343,7 @@ void create_process(CommandHolder holder) {
 
   if (pid == 0){
     child_run_command(holder.cmd); //ajw passes command from holder struct to run command process
-    _exit(EXIT_SUCCESS); 
+    exit(EXIT_SUCCESS); 
   }
 
   //parent_run_command(holder.cmd); // This should be done in the parent branch of
