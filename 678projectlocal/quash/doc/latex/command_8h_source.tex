@@ -1,0 +1,124 @@
+\doxysection{command.\+h}
+\hypertarget{command_8h_source}{}\label{command_8h_source}\index{src/command.h@{src/command.h}}
+\mbox{\hyperlink{command_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ SRC\_COMMAND\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SRC\_COMMAND\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ REDIRECT\_IN\ \ \ \ \ (0x01)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ REDIRECT\_OUT\ \ \ \ (0x04)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ REDIRECT\_APPEND\ (0x08)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ PIPE\_IN\ \ \ \ \ \ \ \ \ (0x10)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ PIPE\_OUT\ \ \ \ \ \ \ \ (0x20)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ BACKGROUND\ \ \ \ \ \ (0x40)}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \{}
+\DoxyCodeLine{00064\ \ \ EOC\ =\ 0,\ \textcolor{comment}{//\ psudo-\/command\ declaring\ the\ end\ of\ a\ command\ array}}
+\DoxyCodeLine{00065\ \ \ GENERIC,}
+\DoxyCodeLine{00066\ \ \ ECHO,}
+\DoxyCodeLine{00067\ \ \ EXPORT,}
+\DoxyCodeLine{00068\ \ \ KILL,}
+\DoxyCodeLine{00069\ \ \ CD,}
+\DoxyCodeLine{00070\ \ \ PWD,}
+\DoxyCodeLine{00071\ \ \ JOBS,}
+\DoxyCodeLine{00072\ \ \ EXIT}
+\DoxyCodeLine{00073\ \}\ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ Command\ Structures}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//}}
+\DoxyCodeLine{00077\ \textcolor{comment}{//\ All\ command\ structures\ must\ begin\ with\ the\ \`{}CommandType\ type`\ field\ since\ this}}
+\DoxyCodeLine{00078\ \textcolor{comment}{//\ is\ used\ to\ determine\ what\ the\ structure\ is\ after\ it\ is\ placed\ in\ a\ \`{}union}}
+\DoxyCodeLine{00079\ \textcolor{comment}{//\ Command`\ structure.}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \{}
+\DoxyCodeLine{00090\ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{structSimpleCommand_a9048c04ff50ab9364d56e04e5c3e8ee0}{type}};\ }
+\DoxyCodeLine{00091\ \}\ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}};}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGenericCommand}{GenericCommand}}\ \{}
+\DoxyCodeLine{00100\ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{structGenericCommand_af50a1b4b5724e01b97f4755627de108e}{type}};\ }
+\DoxyCodeLine{00101\ \ \ \textcolor{keywordtype}{char}**\ \mbox{\hyperlink{structGenericCommand_a0f2219278396d334144d424c02fd6389}{args}};\ \ \ \ \ \ }
+\DoxyCodeLine{00103\ \}\ \mbox{\hyperlink{structGenericCommand}{GenericCommand}};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structGenericCommand}{GenericCommand}}\ \mbox{\hyperlink{command_8h_a8dc22d719c880c1ffcd9bc2dc5773633}{EchoCommand}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structExportCommand}{ExportCommand}}\ \{}
+\DoxyCodeLine{00120\ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{structExportCommand_a6089a285f9584b6f1c5430b46a9c0758}{type}};\ }
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structExportCommand_a8343f52c0f5198ccb21ed3f0c13d5842}{env\_var}};\ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structExportCommand_a8e75db85606e5f9cfcc149c116c3be51}{val}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00124\ \}\ \mbox{\hyperlink{structExportCommand}{ExportCommand}};}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00131\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCDCommand}{CDCommand}}\ \{}
+\DoxyCodeLine{00132\ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{structCDCommand_a8e57e7a2c0aa827e7f211cd0b99483f6}{type}};\ }
+\DoxyCodeLine{00133\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structCDCommand_a3696e9b5a96ed447056a4753906277d1}{dir}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \}\ \mbox{\hyperlink{structCDCommand}{CDCommand}};}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structKillCommand}{KillCommand}}\ \{}
+\DoxyCodeLine{00142\ \ \ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{structKillCommand_a9cd678bc0659f74340e3fca28766bcda}{type}};\ }
+\DoxyCodeLine{00143\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structKillCommand_a20f5367bbec80a936189c57b1f9db351}{sig}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structKillCommand_abd4689c605a3dfe202a1779f0d1191ae}{job}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structKillCommand_a879a36b90427ec640bef5c92a6c9c24e}{sig\_str}};\ \ \ \ }
+\DoxyCodeLine{00146\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structKillCommand_a174a9714a69550b0bbf611e59bfbf332}{job\_str}};\ \ \ \ }
+\DoxyCodeLine{00147\ \}\ \mbox{\hyperlink{structKillCommand}{KillCommand}};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \mbox{\hyperlink{command_8h_a0c0e44e3e2b07b1e9b48023205cb4ca2}{PWDCommand}};}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00161\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \mbox{\hyperlink{command_8h_a027de4ed5fe4b0313c6c8ee0c2c1806b}{JobsCommand}};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \mbox{\hyperlink{command_8h_a354cb87bc40859e5595de56b675732bc}{ExitCommand}};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00175\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \mbox{\hyperlink{command_8h_ae5bf5cf7a34428c221f28179034dd125}{EOCCommand}};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00188\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{union\ }\mbox{\hyperlink{unionCommand}{Command}}\ \{}
+\DoxyCodeLine{00189\ \ \ \mbox{\hyperlink{structSimpleCommand}{SimpleCommand}}\ \mbox{\hyperlink{unionCommand_a269da4d9b16689de14a0ec83636b59e8}{simple}};\ \ \ }
+\DoxyCodeLine{00190\ \ \ \mbox{\hyperlink{structGenericCommand}{GenericCommand}}\ \textcolor{keyword}{generic};\ }
+\DoxyCodeLine{00191\ \ \ \mbox{\hyperlink{structGenericCommand}{EchoCommand}}\ \mbox{\hyperlink{unionCommand_a74de4769cc35dac9a3f7dfd24cb87ad7}{echo}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \mbox{\hyperlink{structExportCommand}{ExportCommand}}\ \mbox{\hyperlink{unionCommand_a57e7a8eb0763aa7105d3bc6a52e59da3}{export}};\ \ \ }
+\DoxyCodeLine{00193\ \ \ \mbox{\hyperlink{structCDCommand}{CDCommand}}\ \mbox{\hyperlink{unionCommand_a488c8f6e6ce10f7c9126f37c5f37776d}{cd}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00194\ \ \ \mbox{\hyperlink{structKillCommand}{KillCommand}}\ \mbox{\hyperlink{unionCommand_a19c5261961f2f9a7fcbf9f5379d3f98a}{kill}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00195\ \ \ \mbox{\hyperlink{structSimpleCommand}{PWDCommand}}\ \mbox{\hyperlink{unionCommand_a34fc21bb2a7fee2df4d3674b9d8166ff}{pwd}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00196\ \ \ \mbox{\hyperlink{structSimpleCommand}{JobsCommand}}\ \mbox{\hyperlink{unionCommand_abeb4905f11baf90a800fe211dd5ecdc9}{jobs}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00197\ \ \ \mbox{\hyperlink{structSimpleCommand}{ExitCommand}}\ \mbox{\hyperlink{unionCommand_ab516bde009e6b06c4b342d7f5bf35ece}{exit}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00198\ \ \ \mbox{\hyperlink{structSimpleCommand}{EOCCommand}}\ \mbox{\hyperlink{unionCommand_a062a1645e04deb34460595c902a49c44}{eoc}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00199\ \}\ \mbox{\hyperlink{unionCommand}{Command}};}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00207\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structCommandHolder}{CommandHolder}}\ \{}
+\DoxyCodeLine{00208\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structCommandHolder_a3691bd22096644e8c6be327fc7d0d246}{redirect\_in}};\ \ }
+\DoxyCodeLine{00210\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structCommandHolder_ac7bfc3e78a8e8b511e2b324c45a17d6f}{redirect\_out}};\ }
+\DoxyCodeLine{00212\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structCommandHolder_acb381d6ab29bc574dc1ff452adc7847a}{flags}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00221\ \ \ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{structCommandHolder_a83a7e82024a6f736ffebed0792aa12a9}{cmd}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00222\ \}\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}};}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \textcolor{comment}{//\ Command\ structure\ constructors}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00252\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}}\ \mbox{\hyperlink{command_8h_abd98f4305f003851cd57b9b20c2598fb}{mk\_command\_holder}}(\textcolor{keywordtype}{char}*\ redirect\_in,\ \textcolor{keywordtype}{char}*\ redirect\_out,\ \textcolor{keywordtype}{char}\ flags,\ \mbox{\hyperlink{unionCommand}{Command}}\ cmd);}
+\DoxyCodeLine{00253\ }
+\DoxyCodeLine{00265\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_aacc43eef331547248883e982f656059a}{mk\_generic\_command}}(\textcolor{keywordtype}{char}**\ args);}
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00275\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_afd836ba65886361a666d4b6c40680b32}{mk\_echo\_command}}(\textcolor{keywordtype}{char}**\ args);}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00288\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_a284929366e9d674109fec7c9872958d8}{mk\_export\_command}}(\textcolor{keywordtype}{char}*\ env\_var,\ \textcolor{keywordtype}{char}*\ val);}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00299\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_a054007a0e38b3f58b824e02449ff66b6}{mk\_cd\_command}}(\textcolor{keywordtype}{char}*\ dir);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00312\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_a33d431b7e34f5f063827109085810eac}{mk\_kill\_command}}(\textcolor{keywordtype}{char}*\ sig,\ \textcolor{keywordtype}{char}*\ job);}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00321\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_ab18329e0efa0ff9bff9f41377d85c39d}{mk\_pwd\_command}}();}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00330\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_aa202066429fbb26a13cdd702953562c4}{mk\_jobs\_command}}();}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00339\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_a60697d98410555ac18a86b2f544eea35}{mk\_exit\_command}}();}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00348\ \mbox{\hyperlink{unionCommand}{Command}}\ \mbox{\hyperlink{command_8h_ade4ef9eca0d11eaa7690942a6d99d551}{mk\_eoc}}();}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00362\ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{command_8h_a1708aa65874060aa7ef99bf9e1671f5c}{get\_command\_type}}(\mbox{\hyperlink{unionCommand}{Command}}\ cmd);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00377\ \mbox{\hyperlink{command_8h_a21e038f5b8958e203d28bc4f18472352}{CommandType}}\ \mbox{\hyperlink{command_8h_aede59bdfd29950fcbb7ace71cb20ea34}{get\_command\_holder\_type}}(\mbox{\hyperlink{structCommandHolder}{CommandHolder}}\ holder);}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00388\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{command_8h_a733982c2f2d2726bf206fc270270b66a}{debug\_print\_script}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCommandHolder}{CommandHolder}}*\ holders);}
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

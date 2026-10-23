@@ -1,0 +1,8 @@
+1,3c1,3
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t4_builtin/sandbox
+< /home/a850w449/Desktop/678Project/678projectlocal/quash/test-cases/t4_builtin/sandbox
+< hello\\n 
+---
+> sandbox
+> sandbox
+> hello

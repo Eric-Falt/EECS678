@@ -1,0 +1,17 @@
+==2512498== Memcheck, a memory error detector
+==2512498== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512498== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512498== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512498== 
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+==2512498== 
+==2512498== HEAP SUMMARY:
+==2512498==     in use at exit: 0 bytes in 0 blocks
+==2512498==   total heap usage: 9 allocs, 9 frees, 28,058 bytes allocated
+==2512498== 
+==2512498== All heap blocks were freed -- no leaks are possible
+==2512498== 
+==2512498== For lists of detected and suppressed errors, rerun with: -s
+==2512498== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -1,0 +1,50 @@
+==2512574== Memcheck, a memory error detector
+==2512574== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512574== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512574== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512574== 
+==2512697== 
+==2512697== HEAP SUMMARY:
+==2512697==     in use at exit: 0 bytes in 0 blocks
+==2512697==   total heap usage: 8 allocs, 8 frees, 34,186 bytes allocated
+==2512697== 
+==2512697== All heap blocks were freed -- no leaks are possible
+==2512697== 
+==2512697== For lists of detected and suppressed errors, rerun with: -s
+==2512697== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512745== 
+==2512745== HEAP SUMMARY:
+==2512745==     in use at exit: 0 bytes in 0 blocks
+==2512745==   total heap usage: 11 allocs, 11 frees, 35,530 bytes allocated
+==2512745== 
+==2512745== All heap blocks were freed -- no leaks are possible
+==2512745== 
+==2512745== For lists of detected and suppressed errors, rerun with: -s
+==2512745== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512811== 
+==2512811== HEAP SUMMARY:
+==2512811==     in use at exit: 0 bytes in 0 blocks
+==2512811==   total heap usage: 18 allocs, 18 frees, 40,266 bytes allocated
+==2512811== 
+==2512811== All heap blocks were freed -- no leaks are possible
+==2512811== 
+==2512811== For lists of detected and suppressed errors, rerun with: -s
+==2512811== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512845== 
+==2512845== HEAP SUMMARY:
+==2512845==     in use at exit: 0 bytes in 0 blocks
+==2512845==   total heap usage: 21 allocs, 21 frees, 41,610 bytes allocated
+==2512845== 
+==2512845== All heap blocks were freed -- no leaks are possible
+==2512845== 
+==2512845== For lists of detected and suppressed errors, rerun with: -s
+==2512845== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512574== 
+==2512574== HEAP SUMMARY:
+==2512574==     in use at exit: 0 bytes in 0 blocks
+==2512574==   total heap usage: 23 allocs, 23 frees, 34,762 bytes allocated
+==2512574== 
+==2512574== All heap blocks were freed -- no leaks are possible
+==2512574== 
+==2512574== For lists of detected and suppressed errors, rerun with: -s
+==2512574== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

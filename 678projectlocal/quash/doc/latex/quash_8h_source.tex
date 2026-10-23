@@ -1,0 +1,31 @@
+\doxysection{quash.\+h}
+\hypertarget{quash_8h_source}{}\label{quash_8h_source}\index{src/quash.h@{src/quash.h}}
+\mbox{\hyperlink{quash_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ SRC\_QUASH\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ SRC\_QUASH\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{execute_8h}{execute.h}}"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structQuashState}{QuashState}}\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structQuashState_a7db3a718696ee9d0c7f8b649ccb88bb4}{running}};\ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structQuashState_a6d92242ecd91c33779ea2deae58956bf}{is\_a\_tty}};\ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{structQuashState_a69d0ad3cb3bf44a92459020d98814f7e}{parsed\_str}};\ }
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{structQuashState}{QuashState}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00032\ \mbox{\hyperlink{structQuashState}{QuashState}}\ \mbox{\hyperlink{quash_8h_a94906260ab98390c63de6eca0764dbb1}{initial\_state}}();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{quash_8h_a0452f566848dba430e0e85fa49a15edc}{get\_command\_string}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{quash_8h_a61da580fc69a74f3ef17956ba5fd88a0}{is\_running}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{quash_8h_a4d364efdccd1dec2290413c6ae28959c}{end\_main\_loop}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ QUASH\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,39 @@
+==2512552== Memcheck, a memory error detector
+==2512552== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512552== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512552== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512552== 
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 381): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 381): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 202): run_jobs()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+==2512703== 
+==2512703== HEAP SUMMARY:
+==2512703==     in use at exit: 0 bytes in 0 blocks
+==2512703==   total heap usage: 13 allocs, 13 frees, 28,682 bytes allocated
+==2512703== 
+==2512703== All heap blocks were freed -- no leaks are possible
+==2512703== 
+==2512703== For lists of detected and suppressed errors, rerun with: -s
+==2512703== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512552== 
+==2512552== HEAP SUMMARY:
+==2512552==     in use at exit: 0 bytes in 0 blocks
+==2512552==   total heap usage: 19 allocs, 19 frees, 31,370 bytes allocated
+==2512552== 
+==2512552== All heap blocks were freed -- no leaks are possible
+==2512552== 
+==2512552== For lists of detected and suppressed errors, rerun with: -s
+==2512552== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

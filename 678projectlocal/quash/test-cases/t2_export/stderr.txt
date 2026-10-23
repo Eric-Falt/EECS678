@@ -1,0 +1,59 @@
+==2512487== Memcheck, a memory error detector
+==2512487== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2512487== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==2512487== Command: /home/a850w449/Desktop/678Project/678projectlocal/quash/quash
+==2512487== 
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 147): run_export()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+IMPLEMENT ME: src/execute.c(line 147): run_export()
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+IMPLEMENT ME: src/execute.c(line 63): check_jobs_bg_status()
+IMPLEMENT ME: src/execute.c(line 327): create_process()
+==2512593== 
+==2512593== HEAP SUMMARY:
+==2512593==     in use at exit: 0 bytes in 0 blocks
+==2512593==   total heap usage: 8 allocs, 8 frees, 34,186 bytes allocated
+==2512593== 
+==2512593== All heap blocks were freed -- no leaks are possible
+==2512593== 
+==2512593== For lists of detected and suppressed errors, rerun with: -s
+==2512593== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+IMPLEMENT ME: src/execute.c(line 376): run_script()
+ERROR: Failed to execute program: No such file or directory
+==2512651== 
+==2512651== HEAP SUMMARY:
+==2512651==     in use at exit: 0 bytes in 0 blocks
+==2512651==   total heap usage: 17 allocs, 17 frees, 36,933 bytes allocated
+==2512651== 
+==2512651== All heap blocks were freed -- no leaks are possible
+==2512651== 
+==2512651== For lists of detected and suppressed errors, rerun with: -s
+==2512651== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512487== 
+==2512487== HEAP SUMMARY:
+==2512487==     in use at exit: 0 bytes in 0 blocks
+==2512487==   total heap usage: 24 allocs, 24 frees, 31,460 bytes allocated
+==2512487== 
+==2512487== All heap blocks were freed -- no leaks are possible
+==2512487== 
+==2512487== For lists of detected and suppressed errors, rerun with: -s
+==2512487== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2512684== 
+==2512684== HEAP SUMMARY:
+==2512684==     in use at exit: 0 bytes in 0 blocks
+==2512684==   total heap usage: 24 allocs, 24 frees, 31,460 bytes allocated
+==2512684== 
+==2512684== All heap blocks were freed -- no leaks are possible
+==2512684== 
+==2512684== For lists of detected and suppressed errors, rerun with: -s
+==2512684== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
