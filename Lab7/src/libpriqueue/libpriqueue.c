@@ -18,14 +18,12 @@
 */
 
 node_t *new_node (void *item, node_t *next) {
-  // Allocate and initialize the link without taking ownership of item.
-  node_t *node = malloc(sizeof(*node));
-  if (node == NULL)
-    return NULL;
+  node_t *newNode = malloc(sizeof(node_t));
 
-  node->item = item;
-  node->next = next;
-  return node;
+  newNode->item = item;
+  newNode->next = next;
+
+  return newNode;
 }
 
 /**
@@ -40,13 +38,17 @@ node_t *new_node (void *item, node_t *next) {
 */
 
 void *destroy_node (node_t *node) {
-  if (node == NULL)
-    return NULL;
+  void *data = NULL;
 
-  // Preserve the stored pointer; only the node itself belongs to this list.
-  void *item = node->item;
-  free(node);
-  return item;
+  if (node != NULL)
+  {
+    data = node->item;
+
+    free(node);
+  }
+  
+  return data;
+  
 }
 
 /**
@@ -60,12 +62,7 @@ void *destroy_node (node_t *node) {
 */
 
 void destroy_list (node_t *node) {
-  if (node == NULL)
-    return;
 
-  // Free from the tail backward so each next pointer remains valid.
-  destroy_list(node->next);
-  destroy_node(node);
 }
 
 /**
@@ -81,13 +78,7 @@ void destroy_list (node_t *node) {
 */
 
 node_t *node_at (node_t *node, int index) {
-  if (index < 0 || node == NULL)
-    return NULL;
-  if (index == 0)
-    return node;
 
-  // Advance one link while reducing the remaining offset.
-  return node_at(node->next, index - 1);
 }
 
 /**
@@ -102,11 +93,7 @@ node_t *node_at (node_t *node, int index) {
 */
 
 int list_size(node_t *node) {
-  if (node == NULL)
-    return 0;
 
-  // Count this node and recursively count the rest of the chain.
-  return 1 + list_size(node->next);
 }
 
 
@@ -122,12 +109,7 @@ int list_size(node_t *node) {
  */
 void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
 {
-  if (q == NULL)
-    return;
-
-  // Keep the caller's ordering rule and start with an empty queue.
-  q->comparer = comparer;
-  q->top = NULL;
+  
 }
 
 
@@ -140,24 +122,7 @@ void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
  */
 int priqueue_offer(priqueue_t *q, void *ptr)
 {
-  if (q == NULL || q->comparer == NULL)
-    return -1;
 
-  node_t **position = &q->top;
-  int index = 0;
-
-  // Find the first lower-priority position; passing equals keeps insertion stable.
-  while (*position != NULL && q->comparer((*position)->item, ptr) <= 0) {
-    position = &(*position)->next;
-    index++;
-  }
-
-  node_t *node = new_node(ptr, *position);
-  if (node == NULL)
-    return -1;
-
-  *position = node;
-  return index;
 }
 
 
@@ -171,8 +136,7 @@ int priqueue_offer(priqueue_t *q, void *ptr)
  */
 void *priqueue_peek(priqueue_t *q)
 {
-  // The head is the highest-priority item; do not modify the queue.
-  return q == NULL || q->top == NULL ? NULL : q->top->item;
+
 }	
 
 
@@ -186,8 +150,7 @@ void *priqueue_peek(priqueue_t *q)
  */
 void *priqueue_poll(priqueue_t *q)
 {
-  // Removing index zero implements polling while sharing unlink logic.
-  return priqueue_remove_at(q, 0);
+
 }
 
 
@@ -204,9 +167,7 @@ void *priqueue_poll(priqueue_t *q)
  */
 void *priqueue_at(priqueue_t *q, int index)
 {
-  // Resolve the node first so invalid indices naturally return NULL.
-  node_t *node = q == NULL ? NULL : node_at(q->top, index);
-  return node == NULL ? NULL : node->item;
+  
 }
 
 
@@ -221,24 +182,7 @@ void *priqueue_at(priqueue_t *q, int index)
  */
 int priqueue_remove(priqueue_t *q, void *ptr)
 {
-  if (q == NULL)
-    return 0;
-
-  int removed = 0;
-  node_t **position = &q->top;
-  // Compare item addresses and keep the link in place after a deletion.
-  while (*position != NULL) {
-    if ((*position)->item == ptr) {
-      node_t *node = *position;
-      *position = node->next;
-      destroy_node(node);
-      removed++;
-    } else {
-      position = &(*position)->next;
-    }
-  }
-
-  return removed;
+  
 }
 
 
@@ -253,21 +197,7 @@ int priqueue_remove(priqueue_t *q, void *ptr)
  */
 void *priqueue_remove_at(priqueue_t *q, int index)
 {
-  if (q == NULL || index < 0)
-    return NULL;
 
-  node_t **position = &q->top;
-  // Walk to the requested link, returning NULL if the list ends first.
-  while (*position != NULL && index > 0) {
-    position = &(*position)->next;
-    index--;
-  }
-  if (*position == NULL)
-    return NULL;
-
-  node_t *node = *position;
-  *position = node->next;
-  return destroy_node(node);
 }
 
 
@@ -279,8 +209,7 @@ void *priqueue_remove_at(priqueue_t *q, int index)
  */
 int priqueue_size(priqueue_t *q)
 {
-  // Queue size is the number of nodes in its linked list.
-  return q == NULL ? 0 : list_size(q->top);
+
 }
 
 
@@ -291,11 +220,5 @@ int priqueue_size(priqueue_t *q)
  */
 void priqueue_destroy(priqueue_t *q)
 {
-  if (q == NULL)
-    return;
 
-  // Release nodes only; item pointers remain owned by the caller.
-  destroy_list(q->top);
-  q->top = NULL;
-  q->comparer = NULL;
 }
