@@ -17,7 +17,8 @@
   @return a pointer to the newly allocated node
 */
 
-node_t *new_node (void *item, node_t *next) {
+node_t *new_node(void *item, node_t *next)
+{
   node_t *newNode = malloc(sizeof(node_t));
 
   newNode->item = item;
@@ -37,7 +38,8 @@ node_t *new_node (void *item, node_t *next) {
   @return NULL if node is NULL
 */
 
-void *destroy_node (node_t *node) {
+void *destroy_node(node_t *node)
+{
   void *data = NULL;
 
   if (node != NULL)
@@ -46,9 +48,8 @@ void *destroy_node (node_t *node) {
 
     free(node);
   }
-  
+
   return data;
-  
 }
 
 /**
@@ -61,8 +62,17 @@ void *destroy_node (node_t *node) {
   @param node a pointer to the first node in the list, or NULL
 */
 
-void destroy_list (node_t *node) {
-
+void destroy_list(node_t *node)
+{
+  if (node != NULL)
+  {
+    while (node != NULL)
+    {
+      node_t *nextNode = node->next;
+      free(node);
+      node = nextNode;
+    }
+  }
 }
 
 /**
@@ -77,8 +87,17 @@ void destroy_list (node_t *node) {
   @return NULL if the index is invalid or does not exist
 */
 
-node_t *node_at (node_t *node, int index) {
+node_t *node_at(node_t *node, int index)
+{
+  if (node == NULL || index < 0)
+    return NULL;
 
+  for (int i = 0; i < index && node != NULL; ++i)
+  {
+    node = node->next;
+  }
+
+  return node;
 }
 
 /**
@@ -92,14 +111,22 @@ node_t *node_at (node_t *node, int index) {
   @return 0 if node is NULL
 */
 
-int list_size(node_t *node) {
+int list_size(node_t *node)
+{
+  int listSize = 0;
 
+  while (node != NULL)
+  {
+    node = node->next;
+    listSize++;
+  }
+
+  return listSize;
 }
-
 
 /**
   Initializes the priqueue_t data structure.
-  
+
   Assumtions
     - You may assume this function will only be called once per instance of priqueue_t
     - You may assume this function will be the first function called using an instance of priqueue_t.
@@ -107,11 +134,11 @@ int list_size(node_t *node) {
   @param comparer a function pointer that compares two elements. If comparer(x, y) < 0, then the priority of x is higher than the priority of y and therefore should be placed earlier in the queue.
   See also @ref comparer-page
  */
-void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
+void priqueue_init(priqueue_t *q, int (*comparer)(const void *, const void *))
 {
-  
+  q->comparer = comparer;
+  q->top = NULL;
 }
-
 
 /**
   Insert the specified element into this priority queue.
@@ -122,44 +149,88 @@ void priqueue_init(priqueue_t *q, int(*comparer)(const void *, const void *))
  */
 int priqueue_offer(priqueue_t *q, void *ptr)
 {
+  node_t *newNode = new_node(ptr, NULL);
+  node_t *tempNode = q->top;
+  node_t *prevNode = NULL;
+  int index = 0;
 
+  while (tempNode != NULL)
+  {
+    if (q->comparer(ptr, tempNode->item) < 0)
+    {
+      newNode->next = tempNode;
+      if (prevNode == NULL)
+      {
+        q->top = newNode;
+      }
+      else
+      {
+        prevNode->next = newNode;
+      }
+      return index;
+    }
+
+    prevNode = tempNode;
+    tempNode = tempNode->next;
+    index++;
+  }
+
+  if (prevNode == NULL)
+  {
+    q->top = newNode;
+  }
+  else
+  {
+    prevNode->next = newNode;
+  }
+
+  return index;
 }
-
 
 /**
   Retrieves, but does not remove, the head of this queue, returning NULL if
   this queue is empty.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @return pointer to element at the head of the queue
   @return NULL if the queue is empty
  */
 void *priqueue_peek(priqueue_t *q)
 {
+  if (q->top == NULL)
+    return NULL;
 
-}	
-
+  return q->top->item;
+}
 
 /**
   Retrieves and removes the head of this queue, or NULL if this queue
   is empty.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @return the head of this queue
   @return NULL if this queue is empty
  */
 void *priqueue_poll(priqueue_t *q)
 {
+  if (q->top == NULL)
+    return NULL;
 
+  void *data = q->top->item;
+
+  node_t *tempNode = q->top;
+
+  q->top = q->top->next;
+
+  free(tempNode);
+
+  return data;
 }
-
-
-
 
 /**
   Returns the element at the specified position in this list, or NULL if
   the queue does not contain an index'th element.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @param index position of retrieved element
   @return the index'th element in the queue
@@ -167,29 +238,60 @@ void *priqueue_poll(priqueue_t *q)
  */
 void *priqueue_at(priqueue_t *q, int index)
 {
-  
+  if (node_at(q->top, index) != NULL)
+    return node_at(q->top, index)->item;
+
+  return NULL;
 }
 
-
 /**
-  Removes all instances of ptr from the queue. 
-  
+  Removes all instances of ptr from the queue.
+
   This function should not use the comparer function, but check if the data contained in each element of the queue is equal (==) to ptr.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @param ptr address of element to be removed
   @return the number of entries removed
  */
 int priqueue_remove(priqueue_t *q, void *ptr)
 {
-  
-}
+  node_t *tempNode = q->top;
+  node_t *prevNode = NULL;
 
+  int entriesRemoved = 0;
+
+  while (tempNode != NULL)
+  {
+    if (tempNode->item == ptr)
+    {
+      entriesRemoved++;
+
+      if (prevNode == NULL)
+      {
+        tempNode = tempNode->next;
+        free(q->top);
+        q->top = tempNode;
+      }
+      else
+      {
+        prevNode->next = tempNode->next;
+        free(tempNode);
+        tempNode = prevNode->next;
+      }
+    }
+    else
+    {
+      prevNode = tempNode;
+      tempNode = tempNode->next;
+    }
+  }
+  return entriesRemoved;
+}
 
 /**
   Removes the specified index from the queue, moving later elements up
   a spot in the queue to fill the gap.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @param index position of element to be removed
   @return the element removed from the queue
@@ -197,28 +299,50 @@ int priqueue_remove(priqueue_t *q, void *ptr)
  */
 void *priqueue_remove_at(priqueue_t *q, int index)
 {
+  if (q->top != NULL && index >= 0)
+  {
+    node_t *tempNode = q->top;
+    node_t *prevNode = NULL;
+    for (int i = 0; i < index && tempNode != NULL; ++i)
+    {
+      prevNode = tempNode;
+      tempNode = tempNode->next;
+    }
+    if (tempNode == NULL)
+    {
+      return NULL;
+    }
+    else if (prevNode == NULL)
+    {
+      return priqueue_poll(q);
+    }
+    else
+    {
+      void *data = tempNode->item;
+      prevNode->next = tempNode->next;
+      free(tempNode);
+      return data;
+    }
+  }
 
+  return NULL;
 }
-
 
 /**
   Return the number of elements in the queue.
- 
+
   @param q a pointer to an instance of the priqueue_t data structure
   @return the number of elements in the queue
  */
 int priqueue_size(priqueue_t *q)
 {
-
 }
-
 
 /**
   Destroys and frees all the memory associated with q.
-  
+
   @param q a pointer to an instance of the priqueue_t data structure
  */
 void priqueue_destroy(priqueue_t *q)
 {
-
 }
