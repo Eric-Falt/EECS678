@@ -1,8 +1,8 @@
 
 # Change these lines before running make tar
-FIRST_NAME=Shevek
-LAST_NAME=Ansible
-KUID=XXXXXXX
+FIRST_NAME=Eric
+LAST_NAME=Faltermeier
+KUID=3053092
 
 LAB=09
 TAR_BASENAME=Lab$(LAB)_$(FIRST_NAME)_$(LAST_NAME)_$(KUID)

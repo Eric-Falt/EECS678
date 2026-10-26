@@ -64,15 +64,11 @@ void *destroy_node(node_t *node)
 
 void destroy_list(node_t *node)
 {
-  if (node != NULL)
-  {
-    while (node != NULL)
-    {
-      node_t *nextNode = node->next;
-      free(node);
-      node = nextNode;
-    }
-  }
+  if (node == NULL)
+    return;
+
+  destroy_list(node->next);
+  free(node);
 }
 
 /**
@@ -336,6 +332,7 @@ void *priqueue_remove_at(priqueue_t *q, int index)
  */
 int priqueue_size(priqueue_t *q)
 {
+  return list_size(q->top);
 }
 
 /**
@@ -345,4 +342,5 @@ int priqueue_size(priqueue_t *q)
  */
 void priqueue_destroy(priqueue_t *q)
 {
+  destroy_list(q->top);
 }
